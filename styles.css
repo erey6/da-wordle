@@ -37,6 +37,10 @@ h1 {
     font-weight: bold;
 }
 
+.dark-border {
+  border: 2.4px solid #00000084;
+}
+
 .keyboard {
     margin-top: 120px;
     display: flex;

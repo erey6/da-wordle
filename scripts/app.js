@@ -1,12 +1,12 @@
 import { wordsArray } from '/scripts/words.js'
 import { dictionary } from '/scripts/dictionary.js'
-const randomNumber = Math.floor(Math.random() * wordsArray.length);
+const randomNumber = Math.floor(Math.random() * wordsArray.length)
 const word = wordsArray[randomNumber].toUpperCase()
 const letterCount = {}
 let currentRowNumber = 1
 let currentRow = `row-${currentRowNumber}`
 let currentGuess = ''
-console.log(word);
+console.log(word)
 const setLetterCount = () => {
   const wordArray = word.split('')
   for (const letter of wordArray) {
@@ -32,11 +32,31 @@ $(() => {
     fillBox(e.target.innerText)
   })
 
+  $(document).on('keypress, keydown', e => {
+    const character = String.fromCharCode(e.keyCode).toUpperCase()
+    if (e.keyCode === 13) {
+      checkWord()
+      return
+    }
+    if (e.keyCode === 8) {
+      deleteLetter()
+      return
+    }
+    if (e.keyCode < 64 || e.keyCode > 90) {
+      showMessage('Not a letter. Try again.')
+    } else {
+      fillBox(character)
+    }
+  })
+
   const fillBox = letter => {
     currentGuess += letter
     for (let index = 0; index < currentGuess.length; index++) {
       $(`#${currentRow} .letter:nth-child(${index + 1})`).text(
         currentGuess[index]
+      )
+      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass(
+        'dark-border'
       )
     }
   }
@@ -44,6 +64,10 @@ $(() => {
   const deleteLetter = () => {
     currentGuess = currentGuess.slice(0, -1)
     currentGuess += ' '
+    $(`#${currentRow} .letter:nth-child(${currentGuess.length})`).removeClass(
+      'dark-border'
+    )
+
     for (let index = 0; index < 5; index++) {
       $(`#${currentRow} .letter:nth-child(${index + 1})`).text(
         currentGuess[index]
