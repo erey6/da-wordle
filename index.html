@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="module" src="scripts/app.js"></script>
+    <title>Mulligan's Wordle</title>
+</head>
+
+<body>
+    <h1>Mulligan's Wordle</h1>
+    <div class="message-area">
+        <h3 id="message">s</h3>
+    </div>
+    <div class="grid-area">
+        <div class="row" id="row-1">
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+        </div>
+        <div class="row" id="row-2">
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+        </div>
+        <div class="row" id="row-3">
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+        </div>
+        <div class="row" id="row-4">
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+        </div>
+        <div class="row" id="row-5">
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+        </div>
+        <div class="row" id="row-6">
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+        </div>
+    </div>
+</body>
+
+<div class="keyboard">
+    <div class="keyrow">
+        <div class="key-letter">Q</div>
+        <div class="key-letter">W</div>
+        <div class="key-letter">E</div>
+        <div class="key-letter">R</div>
+        <div class="key-letter">T</div>
+        <div class="key-letter">Y</div>
+        <div class="key-letter">U</div>
+        <div class="key-letter">I</div>
+        <div class="key-letter">O</div>
+        <div class="key-letter">P</div>
+    </div>
+    <div class="keyrow">
+        <div class="key-letter">A</div>
+        <div class="key-letter">S</div>
+        <div class="key-letter">D</div>
+        <div class="key-letter">F</div>
+        <div class="key-letter">G</div>
+        <div class="key-letter">H</div>
+        <div class="key-letter">I</div>
+        <div class="key-letter">J</div>
+        <div class="key-letter">K</div>
+        <div class="key-letter">L</div>
+    </div>
+    <div class="keyrow">
+        <div id="enter">ENTER</div>
+        <div class="key-letter">Z</div>
+        <div class="key-letter">X</div>
+        <div class="key-letter">C</div>
+        <div class="key-letter">V</div>
+        <div class="key-letter">B</div>
+        <div class="key-letter">N</div>
+        <div class="key-letter">M</div>
+        <div id="delete">&#x232B</div>
+    </div>
+
+</div>
+
+<div class="finish-modal">
+    
+    <div id="modal-message">
+        <div id="close">
+            <a href="#">Close</a>
+        </div>  
+    </div>
+</div>
+
+</html>

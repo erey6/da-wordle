@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+* {
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Source Sans Pro', sans-serif;
+width: 660px;
+margin: 0 auto;
+background-color: #ffffff;
+color: #000000;
+}
+
+h1 {
+    text-align: center;
+}
+.row {
+    display:flex;
+}
+
+.grid-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.letter {
+    border: 2px solid #00000042;
+    border-radius: 3%;
+    height: 66px;
+    width: 66px;
+    margin: .15em;
+    text-align: center;
+    font-size: 2.4rem;
+    padding-top: .3rem;
+    font-weight: bold;
+}
+
+.keyboard {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.keyrow {
+    display: flex;
+    column-gap: 4.5px;
+    margin-bottom: 6px;
+    text-align: center;
+  
+}
+
+.key-letter, #enter, #delete  {
+    min-width: 48px;
+    padding: 1rem 1rem;
+    background-color: #00000042;
+    font-size: 1.3rem;
+    border-radius: 9%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.close-guess {
+    background-color: #DFDB2B;
+    color: #ffffff;
+}
+
+.perfect-guess {
+    background-color: #228B22;
+    color: #ffffff;
+}
+
+.bad-letter {
+    background-color: #00000085;
+    color: #ffffff;
+}
+
+.message-area {
+    margin: 9px auto;
+    height: 69px;
+    text-align: center;
+    padding: 3px;
+    width: 420px;
+    color: #ffffff;
+}
+
+.message-background-black {
+    background-color: #000000;
+    animation: fadeOut ease 4.5s;
+    -webkit-animation: fadeOut ease 4.5s;
+    -moz-animation: fadeOut ease 4.5s;
+    -o-animation: fadeOut ease 4.5s;
+    -ms-animation: fadeOut ease 4.5s;
+}
+
+.finish-modal {
+    background-color: rgba(0,0,0,0.6);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	overflow: hidden;
+    display: none;
+}
+
+#modal-message {
+    margin: 20% auto;
+    background-color: white;
+    width: 300px;
+    text-align: center;
+    padding: 36px 19px;
+}
+
+@keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-moz-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-webkit-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-o-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-ms-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+  }
+  }
