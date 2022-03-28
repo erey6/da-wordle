@@ -1,11 +1,23 @@
-import {wordsArray} from '/scripts/words.js';
-import {dictionary} from '/scripts/dictionary.js';
-const word = wordsArray[12].toUpperCase()
-
+import { wordsArray } from '/scripts/words.js'
+import { dictionary } from '/scripts/dictionary.js'
+const randomNumber = Math.floor(Math.random() * wordsArray.length);
+const word = wordsArray[randomNumber].toUpperCase()
+const letterCount = {}
 let currentRowNumber = 1
 let currentRow = `row-${currentRowNumber}`
 let currentGuess = ''
-
+console.log(word);
+const setLetterCount = () => {
+  const wordArray = word.split('')
+  for (const letter of wordArray) {
+    if (letter in letterCount) {
+      letterCount[letter]++
+    } else {
+      letterCount[letter] = 1
+    }
+  }
+}
+setLetterCount()
 
 $(() => {
   $('#enter').on('click', e => {
@@ -46,8 +58,8 @@ $(() => {
       return
     }
     if (!dictionary.includes(currentGuess.toLowerCase())) {
-        showMessage("That's not in my huge dictionary")
-        return
+      showMessage("That's not in my huge dictionary")
+      return
     }
     if (currentGuess === word) {
       showMessage('Well done!')
@@ -62,12 +74,12 @@ $(() => {
       } else if (word.includes(guessArray[i])) {
         changeBGYellow(guessArray[i], i)
       } else {
-        console.log('not right')
         changeBGGray(currentGuess[i])
       }
     }
     currentGuess = ''
     currentRowNumber++
+    setLetterCount()
     checkCurrentRowNumber()
     currentRow = `row-${currentRowNumber}`
   }
@@ -79,15 +91,25 @@ $(() => {
   }
 
   const changeBGYellow = (letter, index) => {
+    if (letterCount[letter] === 0) {
+      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('bad-letter')
+      return
+    }
     $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('close-guess')
-      $(`.key-letter:contains(${letter})`).addClass('close-guess')
+    $(`.key-letter:contains(${letter})`).addClass('close-guess')
+    letterCount[letter]--
   }
 
   const changeBGGreen = (letter, index) => {
+    if (letterCount[letter] === 0) {
+      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('bad-letter')
+      return
+    }
     $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass(
       'perfect-guess'
     )
     $(`.key-letter:contains(${letter})`).addClass('perfect-guess')
+    letterCount[letter]--
   }
   const changeBGGray = letter => {
     $(`.letter:contains(${letter})`).addClass('bad-letter')
@@ -116,10 +138,8 @@ $(() => {
       )
     }
     const $modalClose = $('#close')
-    $modalClose.on('click', (e) => {
-        $('.finish-modal').css('display', 'none');
+    $modalClose.on('click', e => {
+      $('.finish-modal').css('display', 'none')
     })
   }
-
-  
 })
