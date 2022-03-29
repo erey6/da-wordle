@@ -35,6 +35,8 @@ h1 {
     font-size: 2.4rem;
     padding-top: .3rem;
     font-weight: bold;
+    transition-delay: 450ms; 
+    transition: background-color 300ms color 300ms border 300ms;
 }
 
 .dark-border {
@@ -70,16 +72,19 @@ h1 {
 .close-guess {
     background-color: #DFDB2B;
     color: #ffffff;
+    border: 0px solid #DFDB2B;
 }
 
 .perfect-guess {
     background-color: #228B22;
     color: #ffffff;
+    border: 0px solid #228B22;
 }
 
 .bad-letter {
     background-color: #00000085;
     color: #ffffff;
+    border: 0px solid #00000085;
 }
 
 .message-area {
@@ -98,6 +103,10 @@ h1 {
     -moz-animation: fadeOut ease 4.5s;
     -o-animation: fadeOut ease 4.5s;
     -ms-animation: fadeOut ease 4.5s;
+}
+
+.message-bg-no-fade {
+  background-color: black;
 }
 
 .finish-modal {
@@ -120,6 +129,27 @@ h1 {
     padding: 36px 19px;
 }
 
+.flipped {
+  animation: flip 0.9s ease-in-out;
+}
+
+
+@keyframes flip {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    } 50% {
+      transform: perspective(120px) rotateX(-89) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(-89deg) rotateY(0deg);
+      }51% {
+        transform: perspective(120px) rotateX(90) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(90deg) rotateY(0deg);
+        }100% {
+    transform: perspective(120px) rotateX(0) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+}
+
 @keyframes fadeOut {
     0% {
       opacity:1;
@@ -127,40 +157,4 @@ h1 {
     100% {
       opacity:0;
     }
-  }
-  
-  @-moz-keyframes fadeOut {
-    0% {
-      opacity:1;
-    }
-    100% {
-      opacity:0;
-    }
-  }
-  
-  @-webkit-keyframes fadeOut {
-    0% {
-      opacity:1;
-    }
-    100% {
-      opacity:0;
-    }
-  }
-  
-  @-o-keyframes fadeOut {
-    0% {
-      opacity:1;
-    }
-    100% {
-      opacity:0;
-    }
-  }
-  
-  @-ms-keyframes fadeOut {
-    0% {
-      opacity:1;
-    }
-    100% {
-      opacity:0;
-  }
   }

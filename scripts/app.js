@@ -54,10 +54,7 @@ $(() => {
     for (let index = 0; index < currentGuess.length; index++) {
       $(`#${currentRow} .letter:nth-child(${index + 1})`).text(
         currentGuess[index]
-      )
-      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass(
-        'dark-border'
-      )
+      ).addClass('dark-border')
     }
   }
 
@@ -103,6 +100,7 @@ $(() => {
     }
     currentGuess = ''
     currentRowNumber++
+    console.log(currentRowNumber)
     setLetterCount()
     checkCurrentRowNumber()
     currentRow = `row-${currentRowNumber}`
@@ -116,27 +114,28 @@ $(() => {
 
   const changeBGYellow = (letter, index) => {
     if (letterCount[letter] === 0) {
-      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('bad-letter')
+      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('flipped bad-letter').removeClass('dark-border')
       return
     }
-    $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('close-guess')
+    $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('flipped close-guess').removeClass('dark-border')
     $(`.key-letter:contains(${letter})`).addClass('close-guess')
     letterCount[letter]--
   }
 
   const changeBGGreen = (letter, index) => {
     if (letterCount[letter] === 0) {
-      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('bad-letter')
+      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('flipped bad-letter')
       return
     }
     $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass(
-      'perfect-guess'
+      'flipped perfect-guess'
     )
+
     $(`.key-letter:contains(${letter})`).addClass('perfect-guess')
     letterCount[letter]--
   }
   const changeBGGray = letter => {
-    $(`.letter:contains(${letter})`).addClass('bad-letter')
+    $(`.letter:contains(${letter})`).addClass('flipped bad-letter').removeClass('dark-border')
     $(`.key-letter:contains(${letter})`).addClass('bad-letter')
   }
 
@@ -156,10 +155,8 @@ $(() => {
         '<div id="close"><a href="#">Close</a></div><h1>Congratulations</h1><h3>Thanks for playing</h3>'
       )
     } else {
-      $('.finish-modal').css('display', 'block')
-      $('#modal-message').html(
-        '<h1>Sorry</h1><h3>You have run out of guesses</h3><p>The word was "Your mom"'
-      )
+      $('#message').text(word)
+      $('.message-area').addClass('message-bg-no-fade')
     }
     const $modalClose = $('#close')
     $modalClose.on('click', e => {
