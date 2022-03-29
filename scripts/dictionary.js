@@ -5762,4 +5762,7 @@ export const dictionary = [
 'ditka',
 'bulls',
 'sears',
+'pizza',
+'brats',
+'daley',
 'rizzo']

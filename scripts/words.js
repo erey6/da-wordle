@@ -7,6 +7,7 @@ export const wordsArray =
 'sears',
 'pizza',
 'brats',
+'daley',
 'rizzo']
 // [
 // 'Adult',
