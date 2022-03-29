@@ -6,7 +6,6 @@ const letterCount = {}
 let currentRowNumber = 1
 let currentRow = `row-${currentRowNumber}`
 let currentGuess = ''
-console.log(word)
 const setLetterCount = () => {
   const wordArray = word.split('')
   for (const letter of wordArray) {
@@ -100,7 +99,6 @@ $(() => {
     }
     currentGuess = ''
     currentRowNumber++
-    console.log(currentRowNumber)
     setLetterCount()
     checkCurrentRowNumber()
     currentRow = `row-${currentRowNumber}`

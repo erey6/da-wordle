@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
 * {
 box-sizing: border-box;
 }
 
 body {
-font-family: 'Source Sans Pro', sans-serif;
-width: 660px;
+font-family: 'Open Sans', sans-serif;
+width: 510px;
 margin: 0 auto;
 background-color: #ffffff;
 color: #000000;
@@ -55,7 +55,6 @@ h1 {
     column-gap: 4.5px;
     margin-bottom: 6px;
     text-align: center;
-  
 }
 
 .key-letter, #enter, #delete  {
@@ -156,5 +155,24 @@ h1 {
     }
     100% {
       opacity:0;
+    }
+  }
+
+
+  @media (max-width: 480px) {
+    .keyboard {
+        margin-top: 33px;
+    }
+
+    .key-letter, #enter, #delete  {
+        min-width: 36.6px;
+        padding: .5rem ;
+        font-size: 1.5rem;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .keyrow {
+        column-gap: 8px;
+        margin-bottom: 7px;
     }
   }
