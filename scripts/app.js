@@ -150,7 +150,7 @@ $(() => {
     if (result === 'win') {
       $('.finish-modal').css('display', 'block')
       $('#modal-message').html(
-        '<div id="close"><a href="#">Close</a></div><h1>Congratulations</h1><h3>Thanks for playing</h3>'
+        '<div id="close"><a href="#">Close</a></div><h1>Congratulations</h1><h3>Thanks for playing</h3><a href="/">Restart?</a>'
       )
     } else {
       $('#message').text(word)
