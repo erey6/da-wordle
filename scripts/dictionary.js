@@ -5761,4 +5761,5 @@ export const dictionary = [
 'lovie',
 'ditka',
 'bulls',
-'sears']
+'sears',
+'rizzo']
