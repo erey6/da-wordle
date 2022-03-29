@@ -6,7 +6,8 @@ export const wordsArray =
 'bulls',
 'sears',
 'pizza',
-'brats']
+'brats',
+'daley']
 // [
 // 'Adult',
 // 'Agent',
