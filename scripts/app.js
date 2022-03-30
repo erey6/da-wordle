@@ -1,19 +1,21 @@
 import { wordsArray } from '/scripts/words.js'
 import { dictionary } from '/scripts/dictionary.js'
 const randomNumber = Math.floor(Math.random() * wordsArray.length)
-const word = wordsArray[randomNumber].toUpperCase()
+let word = wordsArray[randomNumber].toUpperCase()
 const letterCount = {}
+const closeLetterCount = {}
 let currentRowNumber = 1
 let currentRow = `row-${currentRowNumber}`
 let currentGuess = ''
 const setLetterCount = () => {
   const wordArray = word.split('')
   for (const letter of wordArray) {
-    if (letter in letterCount) {
-      letterCount[letter]++
-    } else {
-      letterCount[letter] = 1
-    }
+    letterCount[letter] = 0
+    closeLetterCount[letter] = 0
+  }
+  for (const letter of wordArray) {
+    letterCount[letter]++
+    closeLetterCount[letter]++
   }
 }
 setLetterCount()
@@ -51,9 +53,9 @@ $(() => {
   const fillBox = letter => {
     currentGuess += letter
     for (let index = 0; index < currentGuess.length; index++) {
-      $(`#${currentRow} .letter:nth-child(${index + 1})`).text(
-        currentGuess[index]
-      ).addClass('dark-border')
+      $(`#${currentRow} .letter:nth-child(${index + 1})`)
+        .text(currentGuess[index])
+        .addClass('dark-border')
     }
   }
 
@@ -111,19 +113,30 @@ $(() => {
   }
 
   const changeBGYellow = (letter, index) => {
-    if (letterCount[letter] === 0) {
-      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('flipped bad-letter').removeClass('dark-border')
+    if (letterCount[letter] === 0 || closeLetterCount === 0) {
+      $(`#${currentRow} .letter:nth-child(${index + 1})`)
+        .addClass('flipped bad-letter')
+        .removeClass('dark-border')
       return
     }
-    $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('flipped close-guess').removeClass('dark-border')
+    $(`#${currentRow} .letter:nth-child(${index + 1})`)
+      .addClass('flipped close-guess')
+      .removeClass('dark-border')
     $(`.key-letter:contains(${letter})`).addClass('close-guess')
-    letterCount[letter]--
+    closeLetterCount[letter]--
   }
 
   const changeBGGreen = (letter, index) => {
     if (letterCount[letter] === 0) {
-      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass('flipped bad-letter')
+      $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass(
+        'flipped bad-letter'
+      )
       return
+    }
+    if (closeLetterCount[letter] === 0) {
+      $(`#${currentRow} .letter:first-child:contains(${letter})`)
+        .removeClass('close-guess')
+        .addClass('bad-letter')
     }
     $(`#${currentRow} .letter:nth-child(${index + 1})`).addClass(
       'flipped perfect-guess'
@@ -133,7 +146,9 @@ $(() => {
     letterCount[letter]--
   }
   const changeBGGray = letter => {
-    $(`.letter:contains(${letter})`).addClass('flipped bad-letter').removeClass('dark-border')
+    $(`.letter:contains(${letter})`)
+      .addClass('flipped bad-letter')
+      .removeClass('dark-border')
     $(`.key-letter:contains(${letter})`).addClass('bad-letter')
   }
 
