@@ -5765,4 +5765,8 @@ export const dictionary = [
 'pizza',
 'brats',
 'daley',
-'rizzo']
+'rizzo',
+'Windy',
+'Urban',
+'Blues',
+'Obama']
