@@ -8,7 +8,11 @@ export const wordsArray =
 'pizza',
 'brats',
 'daley',
-'rizzo']
+'rizzo',
+'Windy',
+'Urban',
+'Blues',
+'Obama']
 // [
 // 'Adult',
 // 'Agent',
