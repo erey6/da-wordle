@@ -9,10 +9,10 @@ export const wordsArray =
 'brats',
 'daley',
 'rizzo',
-'Windy',
-'Urban',
-'Blues',
-'Obama']
+'windy',
+'urban',
+'blues',
+'obama']
 // [
 // 'Adult',
 // 'Agent',
